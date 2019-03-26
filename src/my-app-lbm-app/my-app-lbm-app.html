@@ -10,8 +10,8 @@
       }
     </style>
     <h1>My Application LBM </h1>
-    <my-buttons></my-buttons>
-    <my-detail is-list-visible='false' is-table-visible='false'></my-detail>
+    <my-buttons id='my-buttons'></my-buttons>
+    <my-detail id='my-detail' list-visible table-visible></my-detail>
   </template>
 
   <script>
@@ -33,16 +33,18 @@
       ready(){
         super.ready();
         this.addEventListener('show-detail', (e) => this.handleClickDetail(e) );
-
       }
 
       handleClickDetail(e){
         if( e.detail === 'ShowList'){
           //mostrar lista y ocultar form 
           console.log('mostrar lista');
+          this.dispatchEvent( new CustomEvent('show-list',{bubbles:true, composed: true})); 
+
         }else if(e.detail === 'ShowTable'){
           //mostrar tabla y ocultar form
           console.log('mostrar tabla');
+          this.dispatchEvent( new CustomEvent('show-table',{bubbles:true, composed: true})); 
         }
       }
     }
