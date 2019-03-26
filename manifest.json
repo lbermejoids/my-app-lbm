@@ -1,0 +1,6 @@
+{
+  "name": "my-app-lbm",
+  "short_name": "my-app-lbm",
+  "start_url": "/",
+  "display": "standalone"
+}

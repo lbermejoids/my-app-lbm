@@ -1,0 +1,52 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/my-buttons/my-buttons.html">
+<link rel="import" href="../../bower_components/my-detail/my-detail.html">
+
+<dom-module id="my-app-lbm-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h1>My Application LBM </h1>
+    <my-buttons></my-buttons>
+    <my-detail is-list-visible='false' is-table-visible='false'></my-detail>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class MyAppLbmApp extends Polymer.Element {
+      static get is() { return 'my-app-lbm-app'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'my-app-lbm-app'
+          }
+        };
+      }
+
+      ready(){
+        super.ready();
+        this.addEventListener('show-detail', (e) => this.handleClickDetail(e) );
+
+      }
+
+      handleClickDetail(e){
+        if( e.detail === 'ShowList'){
+          //mostrar lista y ocultar form 
+          console.log('mostrar lista');
+        }else if(e.detail === 'ShowTable'){
+          //mostrar tabla y ocultar form
+          console.log('mostrar tabla');
+        }
+      }
+    }
+
+    window.customElements.define(MyAppLbmApp.is, MyAppLbmApp);
+  </script>
+</dom-module>
